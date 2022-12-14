@@ -1,10 +1,10 @@
+import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { useContext, useEffect } from 'react';
 import ThemeContext from '../../contexts/ThemeContext';
 
 
 const Button = ({ name, title, onClick, myObj, count, ...restProps }) => {
-
 
     const themeContext = useContext(ThemeContext);
 
@@ -26,7 +26,16 @@ const Button = ({ name, title, onClick, myObj, count, ...restProps }) => {
       }, [count]);
 
     return <div className="flex space-x-2 justify-center">
-    <button type="button" data-theme={themeContext.currentTheme} className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">{title}</button>
+    <button type="button" onClick={(e) => {
+        themeContext.setCurrentTheme('light');
+        themeContext.setCartData({
+            lastUpdated: new Date().getTime()
+        });
+        onClick(e);
+    }} className={clsx(`inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded shadow-md  hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`, {
+        'bg-black hover:bg-gray-700 focus:bg-gray-700 active:bg-blue-800' : themeContext.currentTheme === 'dark',
+        'bg-blue-700 hover:bg-blue-500 focus:bg-blue-500 active:bg-blue-800' : themeContext.currentTheme !== 'dark'
+    })}>{title}</button>
   </div>;
 }
 

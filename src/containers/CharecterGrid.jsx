@@ -17,11 +17,16 @@ const CharecterGrid = () => {
         });
     }, []);
 
-    return (<div className="grid grid-rows-4 grid-flow-col gap-4">
-        {charData?.data?.map(charecterData => {
+    return <div class="container my-24 px-6 mx-auto">
+    <section class="mb-32 text-gray-800 text-center">
+      <h2 class="text-3xl font-bold mb-12 pb-4 text-center">Charecters</h2>
+      <div class="grid lg:grid-cols-5 gap-6 xl:gap-x-12">
+      {charData?.data?.map(charecterData => {
             return <CharTile charecterData={charecterData} />
         })}
-    </div>);
+      </div>
+    </section>
+  </div>
 
 };
 

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 // import Button from './components/Button'
+import 'tw-elements';
 import CharecterGrid from './containers/CharecterGrid';
 import CharDetails from './containers/CharecterDetails';
 import LabelsContext from './contexts/LabelsContext';
@@ -34,7 +35,7 @@ const StoreApp = () => {
       <a onClick={() => { setShowAdd(!showAdd) }}>toggle Button</a> */}
       <ThemeContextProvider>
         <LabelsContext.Provider value={{
-          addtoBag: "Add to Cart"
+          addtoBag: "Add to Bag"
         }}>
           <BrowserRouter>
             <Nav />
