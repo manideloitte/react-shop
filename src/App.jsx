@@ -9,6 +9,9 @@ import LabelsContext from './contexts/LabelsContext';
 import Nav from './components/Nav';
 import ThemeContext, { ThemeContextProvider } from './contexts/ThemeContext';
 
+import { store } from './store'
+import { Provider as StoreProvider } from 'react-redux'
+
 const StoreApp = () => {
   const [count, setCounter] = useState(0);
   const [showAdd, setShowAdd] = useState(false);
@@ -33,6 +36,7 @@ const StoreApp = () => {
       }}/>}
       
       <a onClick={() => { setShowAdd(!showAdd) }}>toggle Button</a> */}
+      <StoreProvider store={store}>
       <ThemeContextProvider>
         <LabelsContext.Provider value={{
           addtoBag: "Add to Bag"
@@ -52,6 +56,7 @@ const StoreApp = () => {
           </BrowserRouter>
         </LabelsContext.Provider>
         </ThemeContextProvider>
+        </StoreProvider>
     </div>
   );
 }
