@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { counterSlice } from './slices/counter'
+import { cartSlice } from './slices/cart'
+import { analyticsSlice } from './slices/analytics'
 
 export const store = configureStore({
   reducer: {
-      counter: counterSlice.reducer
+    analytics: analyticsSlice.reducer,
+    cart: cartSlice.reducer
   },
   devTools: process.env.NODE_ENV !== 'production',
 })
